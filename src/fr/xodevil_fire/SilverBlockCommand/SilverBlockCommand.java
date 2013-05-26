@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class SilverBlockCommand extends JavaPlugin implements Listener {
+public class SilverBlockCommand extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
