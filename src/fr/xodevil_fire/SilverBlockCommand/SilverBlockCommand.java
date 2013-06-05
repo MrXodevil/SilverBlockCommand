@@ -27,6 +27,27 @@ public class SilverBlockCommand extends JavaPlugin {
 					event.setMessage(event.getMessage().replaceAll("@r", Bukkit.getOnlinePlayers()[i].getName()));
 				}
 				
+				if (event.getMessage().contains("@c")) {
+					Player playerFound = null;
+					Double lastDistance = Double.MAX_VALUE;
+					for (Player player : event.getPlayer().getWorld().getPlayers()) {
+						if (player.equals(event.getPlayer())) {
+					        continue; 
+					    }
+					    if (player.getLocation().distance(event.getPlayer().getLocation()) < lastDistance) {
+					        lastDistance = player.getLocation().distance(event.getPlayer().getLocation());
+					        playerFound = player;
+					    }
+					}
+					 
+					if(playerFound != null) {
+						event.setMessage(event.getMessage().replaceAll("@c", playerFound.getName()));
+					} else {
+						event.setMessage(event.getMessage().replaceAll("@c", event.getPlayer().getName()));
+					}
+					
+				}
+				
 				if (event.getMessage().contains("@a")) {
 					event.setCancelled(true);
 					for (Player player : Bukkit.getOnlinePlayers()) {
